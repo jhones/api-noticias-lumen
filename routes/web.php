@@ -14,3 +14,78 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api/v1', 'namespace' => 'V1\Author'], function () use ($router) {
+   $router->post('/autores', [
+       'uses' => 'AuthorController@create'
+   ]);
+   $router->get('/autores', [
+       'uses' => 'AuthorController@findAll'
+   ]);
+   $router->get('/autores/{id}', [
+       'uses' => 'AuthorController@findOneBy'
+   ]);
+   $router->put('/autores/{param}', [
+       'uses' => 'AuthorController@editBy'
+   ]);
+   $router->patch('/autores/{param}', [
+       'uses' => 'AuthorController@editBy'
+   ]);
+   $router->delete('/autores/{id}', [
+       'uses' => 'AuthorController@delete'
+   ]);
+});
+
+$router->group(['prefix' => 'api/v1', 'namespace' => 'V1\News'], function () use ($router) {
+    $router->post('/noticias', [
+        'uses' => 'NewsController@create'
+    ]);
+    $router->get('/noticas', [
+        'uses' => 'NewsController@findAll'
+    ]);
+    $router->get('/noticias/autor/{author}', [
+        'uses' => 'NewsController@findByAuthor'
+    ]);
+    $router->get('/noticias/{param}', [
+        'uses' => 'NewsController@findBy'
+    ]);
+    $router->put('/noticias/{param}', [
+        'uses' => 'NewsController@editBy'
+    ]);
+    $router->patch('/noticias/{param}', [
+        'uses' => 'NewsController@editBy'
+    ]);
+    $router->delete('/noticias/{param}', [
+        'uses' => 'NewsController@deleteBy'
+    ]);
+    $router->delete('/noticias/{author}', [
+        'uses' => 'NewsController@deleteByAuthor'
+    ]);
+});
+
+$router->group(['prefix' => 'api/v1', 'namespace' => 'V1\ImageNews'], function () use ($router) {
+    $router->post('/imagens-noticias', [
+        'uses' => 'ImageNewsController@create'
+    ]);
+    $router->get('/imagens-noticias', [
+        'uses' => 'ImageNewsController@findAll'
+    ]);
+    $router->get('/imagens-noticias/{news}', [
+        'uses' => 'ImageNewsController@findByNews'
+    ]);
+    $router->get('/imagens-noticias/{id}', [
+        'uses' => 'ImageNewsController@findOneBy'
+    ]);
+    $router->put('/imagens-noticias/{param}', [
+        'uses' => 'ImageNewsController@editBy'
+    ]);
+    $router->patch('/imagens-noticias/{param}', [
+        'uses' => 'ImageNewsController@editBy'
+    ]);
+    $router->delete('/imagens-noticias/{news}', [
+        'uses' => 'ImageNewsController@deleteByNews'
+    ]);
+    $router->delete('/imagens-noticias/{id}', [
+        'uses' => 'ImageNewsController@delete'
+    ]);
+});
