@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4be8fced66fbffeff2568a82e343bfc0",
+    "content-hash": "4ae06d4de5727ab0d1c0af58826f9ae5",
     "packages": [
         {
             "name": "brick/math",
@@ -1760,6 +1760,43 @@
                 "source": "https://github.com/laravel/lumen-framework"
             },
             "time": "2020-09-15T14:53:08+00:00"
+        },
+        {
+            "name": "maxsky/lumen-app-key-generator",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maxsky/Lumen-AppKey-Generator.git",
+                "reference": "f6c588e0034f1681633ed4c9cfe1fcaf22f26267"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maxsky/Lumen-AppKey-Generator/zipball/f6c588e0034f1681633ed4c9cfe1fcaf22f26267",
+                "reference": "f6c588e0034f1681633ed4c9cfe1fcaf22f26267",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Console\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Max Sky",
+                    "email": "max940213@live.com"
+                }
+            ],
+            "description": "Set the application key in Lumen Framework.",
+            "support": {
+                "issues": "https://github.com/maxsky/Lumen-AppKey-Generator/issues",
+                "source": "https://github.com/maxsky/Lumen-AppKey-Generator/tree/master"
+            },
+            "time": "2019-03-07T05:44:45+00:00"
         },
         {
             "name": "monolog/monolog",

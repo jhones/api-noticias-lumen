@@ -35,7 +35,7 @@ class Author extends Model
      * @var string[]
      */
     protected $hidden = [
-        'senha'
+//        'senha'
     ];
 
     /**
