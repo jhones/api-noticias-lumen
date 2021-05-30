@@ -11,13 +11,18 @@
 |
 */
 
+use App\Models\Author\Author;
+use App\Models\ImageNews\ImageNews;
+use App\Models\News\News;
+
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'api/v1', 'namespace' => 'V1\Author'], function () use ($router) {
+$router->group(['prefix' => 'api/v1', 'namespace' => 'V1\Author', 'as' => Author::class], function () use ($router) {
    $router->post('/autores', [
-       'uses' => 'AuthorController@create'
+       'uses' => 'AuthorController@create',
+       'middleware' => 'ValidateDataMiddleware'
    ]);
    $router->get('/autores', [
        'uses' => 'AuthorController@findAll'
@@ -26,19 +31,22 @@ $router->group(['prefix' => 'api/v1', 'namespace' => 'V1\Author'], function () u
        'uses' => 'AuthorController@findOneBy'
    ]);
    $router->put('/autores/{param}', [
-       'uses' => 'AuthorController@editBy'
+       'uses' => 'AuthorController@editBy',
+       'middleware' => 'ValidateDataMiddleware'
    ]);
    $router->patch('/autores/{param}', [
-       'uses' => 'AuthorController@editBy'
+       'uses' => 'AuthorController@editBy',
+       'middleware' => 'ValidateDataMiddleware'
    ]);
    $router->delete('/autores/{id}', [
        'uses' => 'AuthorController@delete'
    ]);
 });
 
-$router->group(['prefix' => 'api/v1', 'namespace' => 'V1\News'], function () use ($router) {
+$router->group(['prefix' => 'api/v1', 'namespace' => 'V1\News', 'as' => News::class], function () use ($router) {
     $router->post('/noticias', [
-        'uses' => 'NewsController@create'
+        'uses' => 'NewsController@create',
+        'middleware' => 'ValidateDataMiddleware'
     ]);
     $router->get('/noticias', [
         'uses' => 'NewsController@findAll'
@@ -50,10 +58,12 @@ $router->group(['prefix' => 'api/v1', 'namespace' => 'V1\News'], function () use
         'uses' => 'NewsController@findBy'
     ]);
     $router->put('/noticias/{param}', [
-        'uses' => 'NewsController@editBy'
+        'uses' => 'NewsController@editBy',
+        'middleware' => 'ValidateDataMiddleware'
     ]);
     $router->patch('/noticias/{param}', [
-        'uses' => 'NewsController@editBy'
+        'uses' => 'NewsController@editBy',
+        'middleware' => 'ValidateDataMiddleware'
     ]);
     $router->delete('/noticias/{param}', [
         'uses' => 'NewsController@deleteBy'
@@ -63,9 +73,10 @@ $router->group(['prefix' => 'api/v1', 'namespace' => 'V1\News'], function () use
     ]);
 });
 
-$router->group(['prefix' => 'api/v1', 'namespace' => 'V1\ImageNews'], function () use ($router) {
+$router->group(['prefix' => 'api/v1', 'namespace' => 'V1\ImageNews', 'as' => ImageNews::class], function () use ($router) {
     $router->post('/imagens-noticias', [
-        'uses' => 'ImageNewsController@create'
+        'uses' => 'ImageNewsController@create',
+        'middleware' => 'ValidateDataMiddleware'
     ]);
     $router->get('/imagens-noticias', [
         'uses' => 'ImageNewsController@findAll'
@@ -77,10 +88,12 @@ $router->group(['prefix' => 'api/v1', 'namespace' => 'V1\ImageNews'], function (
         'uses' => 'ImageNewsController@findOneBy'
     ]);
     $router->put('/imagens-noticias/{param}', [
-        'uses' => 'ImageNewsController@editBy'
+        'uses' => 'ImageNewsController@editBy',
+        'middleware' => 'ValidateDataMiddleware'
     ]);
     $router->patch('/imagens-noticias/{param}', [
-        'uses' => 'ImageNewsController@editBy'
+        'uses' => 'ImageNewsController@editBy',
+        'middleware' => 'ValidateDataMiddleware'
     ]);
     $router->delete('/imagens-noticias/noticia/{news}', [
         'uses' => 'ImageNewsController@deleteByNews'
